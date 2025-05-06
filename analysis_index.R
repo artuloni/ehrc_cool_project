@@ -9,6 +9,8 @@ index <- rpois(1000, mu)
 data <- data.frame(pc = pc, index = index)
 #####
 
+
+
 library(performance)
 library(ggplot2)
 
@@ -45,3 +47,10 @@ stargazer(mod.glm, type = "html", out = "model_summary.html")
 browseURL("model_summary.html")
 
 
+# simulation ####
+
+size <- c()
+for(i in 1 : nrow(data)){
+  ifelse(index[i] < mean(index), size[i] <- "small", size[i] <- "big")
+}
+table(size)
