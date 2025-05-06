@@ -32,7 +32,16 @@ sum(residuals(mod.glm, type = "deviance")^2) / df.residual(mod.glm)
 check_model(mod.glm)
 summary(mod.glm)
 
+# Presnetation
+library(stargazer)
+library(GGally)
 
 
+ggcoef(mod.glm, exponentiate = FALSE) + 
+  theme_minimal() +
+  ggtitle("Model Coefficients Plot")
+
+stargazer(mod.glm, type = "html", out = "model_summary.html")
+browseURL("model_summary.html")
 
 
